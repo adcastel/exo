@@ -2637,6 +2637,8 @@ def _make_closure(name, stmts, var_types, order):
             for sz in typ.shape():
                 if isinstance(sz, Sym):
                     sizes.add(sz)
+                elif isinstance(sz, Read):
+                    sizes.add(sz.name)
             args.append(LoopIR.Read(v, [], typ, info))
             fnargs.append(LoopIR.fnarg(v, typ, None, info))
 
